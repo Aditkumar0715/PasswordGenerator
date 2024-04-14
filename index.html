@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PassGen</title>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Password Generator</h1>
+    <div>
+      <input type="text" placeholder="Password" readonly id="pass-gen">
+      <button>
+        <span hidden>Copied</span>
+        <img src="" alt="copy">
+      </button>
+
+    </div>
+    <div>
+
+      <p>Number of characters <b pass-len></b>
+        <!-- <input type="number"  placeholder="Mobile number" pass-len> -->
+      </p>
+
+      <input type="range" range-slider min="1" max="30" step="1" value="15">
+    </div>
+
+    <div character-to-include>
+      <div>
+        <input type="checkbox" id="upper">
+        <label for="upper">Include Upper Case letters</label>
+      </div>
+
+      <div>
+        <input type="checkbox" id="lower">
+        <label for="lower">Include Lower Case letters</label>
+      </div>
+
+      <div>
+        <input type="checkbox" id="number">
+        <label for="number">Include Numbers</label>
+      </div>
+
+      <div>
+        <input type="checkbox" id="special">
+        <label for="special">Include Special Characters</label>
+      </div>
+    </div>
+
+    <div>
+      <p>Password Strength</p>
+      <div pass-strength-indicator></div>
+    </div>
+    <button id="pass-gen-btn">Generate Password</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
