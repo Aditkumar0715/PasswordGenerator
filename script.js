@@ -12,6 +12,7 @@ const passLen = document.querySelector("[pass-len]");
 const strengthIndicator = document.querySelector('[pass-strength-indicator]');
 let symbols = `!@#$%^&*[{(<>)}]-=_+|,./?;:'"\\`;
 
+setPassLen();
 
 passLen.innerHTML = rangeSlider.value;
 // passLen.value = rangeSlider.value;
@@ -29,6 +30,10 @@ rangeSlider.addEventListener("input", setPassLen);
 function setPassLen() {
   passLen.innerHTML = rangeSlider.value;
   // passLen.value = rangeSlider.value;
+  const min = rangeSlider.min;
+  const max = rangeSlider.max;
+  rangeSlider.style.backgroundSize = ((rangeSlider.value - min) * 100 / (max - min)) + "% 100%";
+  rangeSlider.style.backgroundImage = `linear-gradient(to right,red,red )`
 }
 //*counting the no of checkboxes checked
 upper.checked=true;
@@ -114,7 +119,8 @@ passGenBtn.addEventListener('click', () => {
     // console.log(password.length);
     let color = passwordStrength();
     // console.log(color);
-    strengthIndicator.style.cssText=`width:30px; height:30px; background-color:${color}; box-shadow:0px 0 10px 3px ${color}; border-radius:100%`
+    strengthIndicator.style.backgroundColor = `${color}`;
+    strengthIndicator.style.boxShadow = `0 0 10px 3px ${color}`;
   }
 
   });
@@ -137,7 +143,7 @@ function passwordStrength() {
     return "green";
   }
   else if ((passLen.innerHTML > 8 && count>=2) || (count >= 4 && passLen.innerHTML<8)) {
-    return "greenyellow"
+    return "yellow"
   }
   else {
     return "red"
@@ -149,12 +155,12 @@ function passwordStrength() {
 async function copyToClipboard() {
   try {
     await navigator.clipboard.writeText(passDisplay.value);
-    dataCpyMsg.innerHTML='Copied';
+    dataCpyMsg.innerHTML = 'Copied';
   } catch (error) {
     dataCpyMsg.innerHTML = 'Failed';
   }
 
-  dataCpyMsg.style.display = 'inline-block';
+  dataCpyMsg.style.display = 'block';
   setTimeout(() => {
     dataCpyMsg.style.display = 'none';
   }, 2000);

@@ -4,52 +4,56 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PassGen</title>
+  <script src="https://kit.fontawesome.com/0a7abd668c.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="wrapper">
     <h1>Password Generator</h1>
-    <div>
+    <div class="display">
       <input type="text" placeholder="Password" readonly id="display-pass">
       <button copy-pass-btn>
-        <span datacpy-msg style="display: none;"></span>
-        <img src="" alt="copy">
+        <i class="fa-regular fa-copy"></i>Copy
       </button>
-
+      <span datacpy-msg id="cpymsg"></span>
     </div>
-    <div>
 
-      <p>Number of characters <b pass-len></b>
+
+    <div class="sliderWrapper">
+      <div class="sliderval">
+        <p>Number of characters</p>
         <!-- <input type="number"  placeholder="Mobile number" pass-len> -->
-      </p>
+        <p pass-len></p>
 
+      </div>
       <input type="range" range-slider min="1" max="30" step="1" value="15">
     </div>
 
-    <div character-to-include>
-      <div>
+    <div character-to-include class="chkboxWrapper">
+      <div class="chkbox">
         <input type="checkbox" id="upper">
         <label for="upper">Include Upper Case letters</label>
       </div>
 
-      <div>
+      <div class="chkbox">
         <input type="checkbox" id="lower">
         <label for="lower">Include Lower Case letters</label>
       </div>
 
-      <div>
+      <div class="chkbox">
         <input type="checkbox" id="number">
         <label for="number">Include Numbers</label>
       </div>
 
-      <div>
+      <div class="chkbox">
         <input type="checkbox" id="special">
         <label for="special">Include Special Characters</label>
       </div>
     </div>
 
-    <div>
+    <div class="strengthWrapper">
       <p>Password Strength</p>
-      <div pass-strength-indicator></div>
+      <div pass-strength-indicator class="strengthIndicator"></div>
     </div>
     <button id="pass-gen-btn">Generate Password</button>
   </div>
